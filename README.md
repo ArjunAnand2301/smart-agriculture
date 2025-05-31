@@ -360,3 +360,162 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - OpenWeatherMap for weather data
 - Streamlit for the web interface framework
 - All open-source libraries used in this project 
+
+## Environment and Credentials Setup
+
+### Required API Keys and Credentials
+
+1. **Google Earth Engine Credentials**
+   - Sign up at https://earthengine.google.com/
+   - Enable the Earth Engine API in your Google Cloud Console
+   - Create a service account:
+     1. Go to Google Cloud Console > IAM & Admin > Service Accounts
+     2. Click "Create Service Account"
+     3. Name it (e.g., "earth-engine-service")
+     4. Grant "Earth Engine Resource Viewer" role
+     5. Create and download the JSON key file
+   - Save the JSON key file securely (e.g., in `credentials/earth-engine-key.json`)
+   - Note: Keep this file secure and never commit it to version control
+
+2. **OpenWeatherMap API Key**
+   - Sign up at https://openweathermap.org/api
+   - Choose the "Free" tier
+   - Go to "My API Keys" section
+   - Copy your API key
+   - Note: New API keys may take 2-4 hours to activate
+
+### Environment File Setup
+
+1. **Create .env File**
+   ```bash
+   # In your project root directory
+   touch .env  # macOS/Linux
+   # OR
+   echo. > .env  # Windows
+   ```
+
+2. **Configure Environment Variables**
+   ```bash
+   # Open .env in your text editor and add:
+   
+   # Earth Engine Credentials
+   EARTH_ENGINE_CREDENTIALS=credentials/earth-engine-key.json
+   EARTH_ENGINE_SERVICE_ACCOUNT=your-service-account@project.iam.gserviceaccount.com
+   
+   # OpenWeather API
+   OPENWEATHER_API_KEY=your_openweather_api_key
+   
+   # Optional: Configure other settings
+   DEBUG=False
+   LOG_LEVEL=INFO
+   ```
+
+3. **Verify Environment Setup**
+   ```python
+   # Create a test file: test_env.py
+   import os
+   from dotenv import load_dotenv
+   
+   def test_environment():
+       load_dotenv()
+       
+       # Check Earth Engine credentials
+       ee_creds = os.getenv('EARTH_ENGINE_CREDENTIALS')
+       ee_service = os.getenv('EARTH_ENGINE_SERVICE_ACCOUNT')
+       if not ee_creds or not ee_service:
+           print("❌ Earth Engine credentials not found in .env")
+       else:
+           print("✅ Earth Engine credentials found")
+           print(f"Credentials path: {ee_creds}")
+           print(f"Service account: {ee_service}")
+       
+       # Check OpenWeather API key
+       weather_key = os.getenv('OPENWEATHER_API_KEY')
+       if not weather_key:
+           print("❌ OpenWeather API key not found in .env")
+       else:
+           print("✅ OpenWeather API key found")
+   
+   if __name__ == "__main__":
+       test_environment()
+   ```
+
+### Directory Structure for Credentials
+
+```
+smart-agriculture/
+├── credentials/           # Create this directory
+│   └── earth-engine-key.json  # Place your Earth Engine key here
+├── .env                  # Environment variables file
+├── .gitignore           # Already configured to ignore credentials
+└── ... (other project files)
+```
+
+### Security Best Practices
+
+1. **Never commit sensitive files:**
+   - The `.gitignore` file is configured to exclude:
+     - `.env` file
+     - `credentials/` directory
+     - All JSON key files
+     - Virtual environment
+     - Cache files
+
+2. **File permissions:**
+   ```bash
+   # Set restrictive permissions on credentials (macOS/Linux)
+   chmod 600 credentials/earth-engine-key.json
+   chmod 600 .env
+   ```
+
+3. **Backup your credentials:**
+   - Keep a secure backup of your API keys and credentials
+   - Use a password manager or secure vault
+   - Never share credentials in public repositories or discussions
+
+### Troubleshooting Credentials
+
+1. **Earth Engine Authentication Issues**
+   ```bash
+   # Clear existing credentials
+   earthengine authenticate --clear
+   
+   # Re-authenticate with service account
+   earthengine authenticate --service-account your-service-account@project.iam.gserviceaccount.com --key-file credentials/earth-engine-key.json
+   ```
+
+2. **OpenWeather API Issues**
+   - Verify API key is activated (may take 2-4 hours)
+   - Test API key:
+     ```bash
+     curl "https://api.openweathermap.org/data/2.5/weather?lat=38.5449&lon=-121.7421&appid=YOUR_API_KEY&units=metric"
+     ```
+   - Check API key status in OpenWeatherMap dashboard
+
+3. **Environment Variable Issues**
+   ```python
+   # Add this to your code to debug environment variables
+   import os
+   from dotenv import load_dotenv
+   
+   load_dotenv(verbose=True)  # This will print which .env file is being loaded
+   print("Environment variables loaded:", bool(os.getenv('OPENWEATHER_API_KEY')))
+   ```
+
+### Development Environment Setup
+
+1. **Create a development .env file**
+   ```bash
+   # Copy the production .env to .env.dev
+   cp .env .env.dev
+   
+   # Modify .env.dev for development
+   # Add these lines to .env.dev:
+   DEBUG=True
+   LOG_LEVEL=DEBUG
+   ```
+
+2. **Use different credentials for development**
+   - Create a separate service account for development
+   - Use the free tier of OpenWeatherMap API
+   - Keep development credentials separate from production 
