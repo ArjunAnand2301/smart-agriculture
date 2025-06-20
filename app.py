@@ -359,6 +359,7 @@ with tab1:
     col1, col2 = st.columns([2, 1], gap="large")
 
     with col1:
+        st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
         try:
             # Create a map with multiple layers
             m = folium.Map(
@@ -368,13 +369,14 @@ with tab1:
             )
 
             # Display the map with explicit width and height
-            st.subheader("Field Location")
-            st.write("Search for a location, click on the map, or use the input fields to set coordinates")
+            st.markdown("### 🗺️ **NEURAL MAPPING INTERFACE**")
+            st.markdown("*🎯 Select coordinates • 📡 Satellite overlay • 🔍 Precision targeting*")
             folium_static(m, width=700, height=500)
 
         except Exception as e:
-            st.error(f"Error creating map: {str(e)}")
-            st.info("Could not display map.")
+            st.error(f"⚠️ **SYSTEM ERROR**: {str(e)}")
+            st.info("🔧 **DIAGNOSTICS**: Map interface temporarily unavailable")
+        st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
         st.subheader("Field Details")
