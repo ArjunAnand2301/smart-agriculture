@@ -379,23 +379,27 @@ with tab1:
         st.markdown('</div>', unsafe_allow_html=True)
 
     with col2:
-        st.subheader("Field Details")
+        st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+        st.markdown("### 🎛️ **CONTROL MATRIX**")
+        st.markdown("*Neural navigation and coordinate systems*")
 
         # Location search
-        search_query = st.text_input("Search Location", placeholder="Enter city, address, or landmark", key="location_search")
+        search_query = st.text_input("🔍 **LOCATION SCANNER**", placeholder="🌍 Enter city, address, or landmark...", key="location_search")
         if search_query:
-            coords, address = search_location(search_query)
-            if coords:
-                st.session_state.map_center = coords
-                st.session_state.last_coords = coords
-                st.success(f"Found: {address}")
-                st.rerun() # Rerun after search to update map and coordinates
-            else:
-                st.warning("Location not found. Please try a different search term.")
+            with st.spinner("🛰️ **Scanning global coordinates...**"):
+                coords, address = search_location(search_query)
+                if coords:
+                    st.session_state.map_center = coords
+                    st.session_state.last_coords = coords
+                    st.success(f"✅ **TARGET ACQUIRED**: {address}")
+                    st.rerun() # Rerun after search to update map and coordinates
+                else:
+                    st.warning("⚠️ **SCAN FAILED**: Location not found in database")
 
+        st.markdown("#### 📍 **PRECISION COORDINATES**")
         # Input fields for coordinates
-        longitude = st.number_input("Longitude", value=st.session_state.map_center[1], format="%f", key="longitude_input")
-        latitude = st.number_input("Latitude", value=st.session_state.map_center[0], format="%f", key="latitude_input")
+        longitude = st.number_input("🌐 **LONGITUDE**", value=st.session_state.map_center[1], format="%f", key="longitude_input")
+        latitude = st.number_input("🌐 **LATITUDE**", value=st.session_state.map_center[0], format="%f", key="latitude_input")
 
         # Update map center in state when coordinates change but don't rerun automatically
         st.session_state.map_center[0] = latitude
