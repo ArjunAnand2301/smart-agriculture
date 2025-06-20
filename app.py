@@ -577,22 +577,23 @@ with tab1:
 
                     # Display daily forecast
                     for date, row in daily_forecast.iterrows():
-                        with st.expander(f"{date.strftime('%A, %B %d')}"):
+                        with st.expander(f"📅 **{date.strftime('%A, %B %d')}** • Neural Forecast"):
                             col1, col2, col3 = st.columns(3)
                             with col1:
-                                st.metric("Temperature",
+                                st.metric("🌡️ **Thermal Range**",
                                         f"{row['temperature_mean']:.1f}°C",
                                         f"Min: {row['temperature_min']:.1f}°C, Max: {row['temperature_max']:.1f}°C")
                             with col2:
-                                st.metric("Humidity", f"{row['humidity_mean']:.1f}%")
+                                st.metric("💧 **Moisture Level**", f"{row['humidity_mean']:.1f}%")
                             with col3:
-                                st.metric("Precipitation", f"{row['precipitation_mean']:.1f}%")
+                                st.metric("🌧️ **Precipitation**", f"{row['precipitation_mean']:.1f}%")
 
                             # Get weather description for this day
                             day_weather = forecast_df[forecast_df['date'] == date]['weather_description'].mode().iloc[0]
-                            st.markdown(f"**Conditions:** {day_weather.title()}")
+                            st.markdown(f"☁️ **Atmospheric Pattern:** {day_weather.title()}")
                 else:
-                    st.error(f"Error fetching weather data: {weather_data['message']}")
+                    st.error(f"❌ **ATMOSPHERIC DATA ERROR**: {weather_data['message']}")
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with tab2:
     st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
