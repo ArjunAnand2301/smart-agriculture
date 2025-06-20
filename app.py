@@ -426,17 +426,14 @@ with tab1:
                 st.rerun() # Rerun to reset view
 
         # Map layers
-        st.subheader("Map Layers")
-        st.session_state.map_layers['OpenStreetMap'] = st.checkbox("Street Map", value=True, key="street_map_layer_col2")
-        st.session_state.map_layers['Satellite'] = st.checkbox("Satellite View", key="satellite_layer_col2")
-        st.session_state.map_layers['Terrain'] = st.checkbox("Terrain View", key="terrain_layer_col2")
-
-        # Note: The checkbox state needs to be handled to update the map layers. This will require rebuilding the map based on the checked layers.
-        # For now, the map display in col1 is simplified, but we'll address dynamic layers later.
+        st.markdown("#### 🌐 **OVERLAY SYSTEMS**")
+        st.session_state.map_layers['OpenStreetMap'] = st.checkbox("🗺️ **Street Grid**", value=True, key="street_map_layer_col2")
+        st.session_state.map_layers['Satellite'] = st.checkbox("🛰️ **Satellite View**", key="satellite_layer_col2")
+        st.session_state.map_layers['Terrain'] = st.checkbox("🏔️ **Terrain Mode**", key="terrain_layer_col2")
 
         # Field details
-        st.subheader("Field Information")
-        crop_type = st.selectbox("Crop Type", ["wheat", "corn", "rice", "soybeans", "cotton"], key="crop_type_select")
+        st.markdown("#### 🌾 **CROP ANALYTICS**")
+        crop_type = st.selectbox("🌱 **Primary Crop**", ["wheat", "corn", "rice", "soybeans", "cotton"], key="crop_type_select")
 
         end_date = st.date_input("End Date", value=datetime.now().date(), key="end_date_input")
         start_date = st.date_input(
