@@ -760,9 +760,11 @@ with tab4:
 
     # Display agent analysis results if available in session state
     if 'agent_analysis_results' in st.session_state and st.session_state.agent_analysis_results:
-        st.subheader("Latest Agent Analysis Results")
+        st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+        st.markdown("### 📊 **NEURAL INTELLIGENCE REPORTS**")
+        st.markdown("*Comprehensive analysis data from autonomous field agents*")
         for field_name, results in st.session_state.agent_analysis_results.items():
-            with st.expander(f"Raw Results for {field_name}", expanded=False):
+            with st.expander(f"🤖 **AGENT REPORT**: {field_name} • Neural Analysis Matrix", expanded=False):
                 if 'error' in results:
                     st.error(f"Error during analysis: {results['error']}")
                 else:
