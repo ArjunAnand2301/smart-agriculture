@@ -488,13 +488,15 @@ with tab1:
         st.markdown('</div>', unsafe_allow_html=True)
 
                 # Display results in an expandable section
-                with st.expander("Field Analysis Results", expanded=True):
+                with st.expander("🔬 **QUANTUM FIELD ANALYSIS** • Neural Network Results", expanded=True):
+                    st.markdown("*Advanced AI analysis of crop health and field conditions*")
                     # Remove internal status fields from display
                     display_analysis = {k: v for k, v in health_analysis.items()
                                      if k not in ['data_quality', 'status_message']}
                     st.json(display_analysis)
 
-                with st.expander("Resource Optimization Recommendations", expanded=True):
+                with st.expander("🎯 **OPTIMIZATION PROTOCOLS** • Resource Management AI", expanded=True):
+                    st.markdown("*Intelligent recommendations for maximum efficiency*")
                     st.json(results["recommendations"])
 
                 # Water usage recommendations
