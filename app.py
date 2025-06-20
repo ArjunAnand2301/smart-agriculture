@@ -950,5 +950,21 @@ with tab5:
         # Add assistant response to chat history
         st.session_state.chat_history.append({"role": "assistant", "content": response})
 
-st.sidebar.markdown("---")
-st.sidebar.info("Developed for sustainable farming 🌾")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Futuristic sidebar
+st.sidebar.markdown("""
+<div style="
+    background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 71, 217, 0.1));
+    border: 1px solid var(--border-glow);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(10px);
+">
+    <h3 style="color: var(--neon-cyan); font-family: 'Orbitron', monospace;">⚡ NEXUS AGRITECH</h3>
+    <p style="color: var(--neon-cyan); opacity: 0.8;">Next-generation sustainable farming intelligence</p>
+    <p style="color: var(--neon-purple); font-size: 0.9em;">🚀 Powered by Quantum AI</p>
+</div>
+""", unsafe_allow_html=True)
