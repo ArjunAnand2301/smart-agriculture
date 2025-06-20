@@ -370,7 +370,7 @@ with tab1:
 
             # Display the map with explicit width and height
             st.markdown("### 🗺️ **NEURAL MAPPING INTERFACE**")
-            st.markdown("*🎯 Select coordinates • ���� Satellite overlay • 🔍 Precision targeting*")
+            st.markdown("*🎯 Select coordinates • 📡 Satellite overlay • 🔍 Precision targeting*")
             folium_static(m, width=700, height=500)
 
         except Exception as e:
@@ -460,7 +460,8 @@ with tab1:
             st.success("✅ **BOUNDARIES LOCKED**: Field perimeter secured!")
 
         if st.button("🔬 **INITIATE DEEP SCAN**", key="analyze_field_btn"):
-            st.info("Running analysis. Please wait...")
+            with st.spinner("🛰️ **Quantum field analysis in progress...** ⚡"):
+                st.info("🔄 **NEURAL NETWORKS PROCESSING**: Satellite data fusion active...")
             system = SmartAgricultureSystem()
             field_coordinates = [longitude, latitude]
             try:
@@ -477,13 +478,14 @@ with tab1:
                 status_message = health_analysis.get('status_message', '')
 
                 if data_quality == 'limited':
-                    st.warning("⚠️ Limited satellite data available")
-                    st.info(status_message)
+                    st.warning("⚠️ **DATA CONSTRAINT**: Limited satellite coverage detected")
+                    st.info(f"📡 **SYSTEM STATUS**: {status_message}")
                 elif data_quality == 'error':
-                    st.error("❌ Error in analysis")
-                    st.error(status_message)
+                    st.error("❌ **CRITICAL ERROR**: Analysis protocol failed")
+                    st.error(f"🔧 **DIAGNOSTICS**: {status_message}")
                 else:
-                    st.success("✅ Analysis completed successfully")
+                    st.success("✅ **ANALYSIS COMPLETE**: Full spectrum data acquired")
+        st.markdown('</div>', unsafe_allow_html=True)
 
                 # Display results in an expandable section
                 with st.expander("Field Analysis Results", expanded=True):
