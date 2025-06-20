@@ -406,21 +406,21 @@ with tab1:
         st.session_state.map_center[1] = longitude
 
         # Button to manually update map and rerun after coordinate input
-        if st.button("Update Location", key="update_location_btn"):
+        if st.button("🎯 **UPDATE POSITION**", key="update_location_btn"):
             st.session_state.last_coords = st.session_state.map_center # Update last_coords here
             st.rerun()
 
         # Map controls
-        st.subheader("Map Controls")
+        st.markdown("#### 🎮 **NAVIGATION CONTROLS**")
         col_controls1, col_controls2 = st.columns(2)
         with col_controls1:
-            if st.button("Center Map", use_container_width=True, key="center_map_btn"):
+            if st.button("📍 **CENTER**", use_container_width=True, key="center_map_btn"):
                 st.session_state.map_center = [latitude, longitude]
                 st.session_state.last_coords = [latitude, longitude]
                 st.rerun() # Rerun to center map
 
         with col_controls2:
-            if st.button("Reset View", use_container_width=True, key="reset_view_btn"):
+            if st.button("🔄 **RESET**", use_container_width=True, key="reset_view_btn"):
                 st.session_state.map_center = [38.5449, -121.7421]
                 st.session_state.last_coords = st.session_state.map_center
                 st.rerun() # Rerun to reset view
