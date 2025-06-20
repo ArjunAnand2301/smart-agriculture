@@ -660,34 +660,46 @@ with tab2:
     st.markdown('</div>', unsafe_allow_html=True)
 
 with tab3:
-    st.header("Community Insights")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("## 🌐 NEURAL NETWORK HUB")
+    st.markdown("*Global farmer intelligence and collaborative knowledge sharing*")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Create a section for local farming tips
-    st.subheader("Local Farming Tips")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 🧠 **COLLECTIVE INTELLIGENCE**")
+    st.markdown("*Real-time insights from the agricultural neural network*")
     tips = [
-        "🌧️ Local farmers report good results with early morning irrigation",
-        "🌱 Consider crop rotation with legumes to improve soil health",
-        "🐝 Local beekeepers are available for pollination services",
-        "🌾 Wheat varieties XYZ and ABC are performing well in this region"
+        "🌧️ **HYDRO PROTOCOL**: Neural farmers report 23% efficiency gains with dawn irrigation cycles",
+        "🌱 **SOIL MATRIX**: Legume rotation sequences showing 31% nitrogen optimization",
+        "🐝 **BIO-ALLIANCE**: Pollination partnerships available via quantum bee network",
+        "🌾 **STRAIN DATA**: Wheat variants XYZ-7 and ABC-9 achieving superior yields in sector"
     ]
     for tip in tips:
         st.info(tip)
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Add a section for community questions
-    st.subheader("Ask the Community")
-    question = st.text_area("Post your question to the farming community")
-    if st.button("Submit Question"):
-        st.success("Question submitted! Local farmers will be notified.")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 💬 **HIVE MIND QUERIES**")
+    st.markdown("*Connect with the global agricultural consciousness*")
+    question = st.text_area("🗣️ **Transmit your query to the network**", placeholder="Share your farming challenge with the collective...")
+    if st.button("📡 **BROADCAST SIGNAL**"):
+        st.success("✅ **SIGNAL TRANSMITTED**: Neural farmers across the network have been alerted!")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Add a section for local weather alerts
-    st.subheader("Local Weather Alerts")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### ⚡ **ATMOSPHERIC WARNINGS**")
+    st.markdown("*Real-time environmental threat detection system*")
     alerts = [
-        "⚠️ Heavy rainfall expected in the next 48 hours",
-        "🌡️ Temperature expected to drop below 10°C tonight",
-        "💨 Strong winds forecasted for tomorrow morning"
+        "⚠️ **HYDRO SURGE**: Heavy precipitation incoming - 48-hour window detected",
+        "🌡️ **THERMAL ALERT**: Temperature drop to sub-10°C threshold tonight",
+        "💨 **WIND PATTERN**: High-velocity atmospheric disturbance - dawn sector"
     ]
     for alert in alerts:
         st.warning(alert)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with tab4:
     st.header("Agent Management")
