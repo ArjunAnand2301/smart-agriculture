@@ -843,7 +843,7 @@ with tab5:
 
         # Generate the agent's response
         with st.chat_message("assistant"):
-            with st.spinner("Thinking..."):
+            with st.spinner("🤖 **Neural processing active...** 🧠"):
                 response = ""
 
                 # --- Chatbot Logic ---+
