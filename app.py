@@ -527,7 +527,7 @@ with tab1:
         st.markdown("### 🌦️ **ATMOSPHERIC INTEL**")
         st.markdown("*Real-time meteorological data and forecasting*")
         if st.button("🛰️ **SCAN ATMOSPHERE**", key="weather_report_btn"):
-            with st.spinner("Fetching weather data..."):
+            with st.spinner("🌦️ **Atmospheric data synchronization in progress...** 🛰️"):
                 system = SmartAgricultureSystem()
                 weather_data = system.get_weather_report([latitude, longitude])
 
@@ -537,30 +537,30 @@ with tab1:
                     insights = weather_data['insights']
 
                     # Display current weather
-                    st.markdown("### Current Weather")
+                    st.markdown("### 🌡️ **REAL-TIME ATMOSPHERIC DATA**")
                     col_temp, col_hum = st.columns(2)
                     with col_temp:
-                        st.metric("Temperature", f"{current['temperature']:.1f}°C",
+                        st.metric("🌡️ **Temperature**", f"{current['temperature']:.1f}°C",
                                 f"Feels like: {current['feels_like']:.1f}°C")
                     with col_hum:
-                        st.metric("Humidity", f"{current['humidity']}%")
+                        st.metric("💧 **Humidity**", f"{current['humidity']}%")
 
                     col_wind, col_pres = st.columns(2)
                     with col_wind:
-                        st.metric("Wind Speed", f"{current['wind_speed']} m/s")
+                        st.metric("💨 **Wind Velocity**", f"{current['wind_speed']} m/s")
                     with col_pres:
-                        st.metric("Pressure", f"{current['pressure']} hPa")
+                        st.metric("📊 **Pressure**", f"{current['pressure']} hPa")
 
-                    st.markdown(f"**Conditions:** {current['weather_description'].title()}")
+                    st.markdown(f"☁️ **Atmospheric Status:** {current['weather_description'].title()}")
 
                     # Display weather insights
                     if insights:
-                        st.markdown("### Weather Insights")
+                        st.markdown("### 🧠 **NEURAL WEATHER ANALYSIS**")
                         for insight in insights:
-                            st.info(insight)
+                            st.info(f"💡 **AI INSIGHT**: {insight}")
 
                     # Display forecast
-                    st.markdown("### 5-Day Forecast")
+                    st.markdown("### 📅 **5-DAY PREDICTION MATRIX**")
                     forecast_df = pd.DataFrame(forecast)
                     forecast_df['date'] = forecast_df['timestamp'].dt.date
                     forecast_df['time'] = forecast_df['timestamp'].dt.time
