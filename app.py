@@ -819,7 +819,14 @@ with tab4:
         st.markdown('</div>', unsafe_allow_html=True)
 
 with tab5:
-    st.header("Agricultural Chatbot")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("## 💬 NEURAL CHAT INTERFACE")
+    st.markdown("*Advanced AI agricultural consultant with quantum intelligence*")
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 🧠 **CONVERSATION MATRIX**")
+    st.markdown("*Real-time neural dialogue with agricultural AI*")
 
     # Display chat messages from history
     for message in st.session_state.chat_history:
@@ -827,7 +834,7 @@ with tab5:
             st.markdown(message["content"])
 
     # Accept user input
-    if prompt := st.chat_input("Ask me about your fields..."):
+    if prompt := st.chat_input("🗣️ Interface with the neural network..."):
         # Add user message to chat history
         st.session_state.chat_history.append({"role": "user", "content": prompt})
         # Display user message
