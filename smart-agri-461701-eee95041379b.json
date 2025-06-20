@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "smart-agri-461701",
+  "private_key_id": "eee95041379bc2479814399ec6ff7fa242f705e4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC0IM85JkTxarNq\n7Jhdv8aWLhnCK4f9VU+hEd6dfJti1C4NFfrxvgrv4w6ujbHjVxhffpdWc3VEnjP9\nUel8lr1lFD74P75L3ntkzxCzrwhvhqsOHA/rJldXDHMNceqBk1OZiLLYT6clvyFA\nFobUJL3/gG54JKhweV0/1J5wLovdVxbx50THPzcjbxKRvZ072YlY0QdUG3aWJGlS\nrXHT6Hq83P1GQj7O2Y1sXj11Enk1z9UHn3fZiACIex0srRkYyGKIlk1OvVUAUHy/\no4L7OSzFcMYxTu9a8J7kSFtTTsveR3kCb8J89vkKyoRHYfzGJLzhlU4AkeAvzlVd\nXJPH8t7ZAgMBAAECggEAC8CoRJ5OmUHQ+wT83AELP/k6DQUyFkFetK+pyrS6nrQh\nXRE2ElfH9ublqlXsaVzhZjmoPifCWvvHgJu7lDlxmgq8IQ5nqCOYAXfRKygccMpk\nlsMV9s3FnRRe3V21Y0btiXL12E86JKhXzwqpOWY8T1Nd4dDifJQulV+WBtPCpGpS\nBpx9U/44coChw38qV/u1Kb0IM20/nz5hma56nHUzCVdjO/JrTSQODFtWqtM0ge0n\nDWkrvXWx0Q9UQYS0V9wHn0j+PV8lSeU3kFFFF2Z4SqShM/0ZiYGmRJy90iPRmnDP\ngKUwES7xap+gEh2aaleDNuPudk5TyAHTNeJICY+GQQKBgQDyZJbz1EBuZX268j4T\nBZA4EKwbcMFk8/GATfbhyPXmyd1ciWVKpgZdk0IrYwmoAzfdKdA/kmcEiGCeccEz\ngqmHc6t0g4YtXzexNuX75GnDlFzXtKKibojaoobnDN2CKbfFmMc33xXk30LpB/uZ\ncojlxQHcuZt7a0zc5ycAyEsknQKBgQC+PWrm1RZ3RtvGA4sp/l2atuPoRLtaZ6WR\nmxly4+yfDW9txOgDwHOvOYkXNZqyt2dLxOP8QFZuThqn3ovBZEmDeXXkJaeMoDp5\nTUzjuetytEFw9uhRUUYDlScV/RCOD2rx1C8VnEMbvU7tw0BHjPe0uQFH9A50rDj0\nxG28b/7obQKBgFDstFkDa99vkuJvLbo8CUIujsc6hdameuJTJTGMXkyG6JiUZnTd\nqRJkr5q8neSx7lywMQ6IWkxxG5DKea4w2ViXjY6AurM7LuTDZ1UJlSXuynBZplKE\nhLw5tsA801c5hlk6AIjuueiHgVc7iwxX6MyNUWnXrckusaKuqZ7hP/UhAoGAS11z\ne00RoGEu8cw3loRRutgXg82u10rWWc+zDkPjWsNs0HTAYbQdYF6Pw+UVixWDU44F\nr8ohM4O3padRgGTlhrNYk/Ci5uAXKjUIb/MYppFol4MJWCW1cfflyx09MLpE6Nbh\nbFNCdrvRh/ng/jeHbk4YhtPV4jzUN4uV2aAYwSUCgYEA5KcbMIvB5qUdUWomrdBV\njWmB1roQqSvgGuqzAoFLTiKdmzaTr7ISSj35uoBIuFY86/ZnAIhaNUSjUwA1RGvj\nH/JH819TFf+dl+fmTV+U4PMOviLkPEPj2qNzR0FYHTzwZyB/9te+uNE97Ckn66O4\nYIUzt6BOnKazwShEZ9HSHqw=\n-----END PRIVATE KEY-----\n",
+  "client_email": "earth-engine-service@smart-agri-461701.iam.gserviceaccount.com",
+  "client_id": "117642009769605953240",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/earth-engine-service%40smart-agri-461701.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
