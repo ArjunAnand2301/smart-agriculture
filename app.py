@@ -350,10 +350,13 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs([
 ])
 
 with tab1:
-    st.header("Field Analysis")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("## 🛰️ QUANTUM FIELD SCANNER")
+    st.markdown("*Advanced satellite analysis and real-time field monitoring*")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Create two columns for the layout
-    col1, col2 = st.columns([2, 1])
+    col1, col2 = st.columns([2, 1], gap="large")
 
     with col1:
         try:
