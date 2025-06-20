@@ -520,11 +520,13 @@ with tab1:
 
                 st.success("🎉 **MISSION COMPLETE**: All systems operational")
             except Exception as e:
-                st.error(f"Error running analysis: {str(e)}")
+                st.error(f"❌ **CRITICAL SYSTEM ERROR**: {str(e)}")
 
         # Add Weather Report Section
-        st.subheader("Weather Report")
-        if st.button("Get Weather Report", key="weather_report_btn"):
+        st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+        st.markdown("### 🌦️ **ATMOSPHERIC INTEL**")
+        st.markdown("*Real-time meteorological data and forecasting*")
+        if st.button("🛰️ **SCAN ATMOSPHERE**", key="weather_report_btn"):
             with st.spinner("Fetching weather data..."):
                 system = SmartAgricultureSystem()
                 weather_data = system.get_weather_report([latitude, longitude])
