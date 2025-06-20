@@ -873,17 +873,17 @@ with tab5:
                                 field_insights = processed_insights.get('On-Demand Field', {})
 
                                 # --- Format and Display Report ---+
-                                response += "Here is the analysis report for the requested field:\n\n"
-                                response += f"**Summary:** {field_insights.get('summary', 'No summary available.')}\n"
+                                response += "📊 **NEURAL ANALYSIS COMPLETE** • Field Intelligence Report:\n\n"
+                                response += f"🎯 **EXECUTIVE SUMMARY:** {field_insights.get('summary', 'No intelligence data available.')}\n"
                                 if field_insights.get('anomalies'):
-                                    response += "**Anomalies Detected:**\n"
+                                    response += "\n⚠️ **THREAT MATRIX:**\n"
                                     for anomaly in field_insights['anomalies']:
-                                        response += f"- {anomaly}\n"
+                                        response += f"🚨 {anomaly}\n"
 
                                 # Add detailed recommendations
                                 if 'recommendations' in analysis_results and analysis_results['recommendations']:
                                     recommendations = analysis_results['recommendations']
-                                    response += "\n**Detailed Recommendations:**\n"
+                                    response += "\n🎯 **OPTIMIZATION PROTOCOLS:**\n"
                                     if recommendations:
                                         # Briefly list recommendation categories and then details
                                         for category, rec_list in recommendations.items():
