@@ -340,8 +340,14 @@ def parse_coordinates(text):
             return None
     return None
 
-# Create tabs for different features
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Field Analysis", "Historical Data", "Community Insights", "Agent Management", "Chatbot"])
+# Create tabs for different features with futuristic styling
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "🛰️ FIELD SCANNER",
+    "📊 DATA ARCHIVE",
+    "🌐 NETWORK HUB",
+    "🤖 AI AGENTS",
+    "💬 NEURAL CHAT"
+])
 
 with tab1:
     st.header("Field Analysis")
