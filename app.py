@@ -742,19 +742,21 @@ with tab4:
     st.markdown("*Manual override and emergency protocols*")
     if st.button("🔬 **EXECUTE FULL SPECTRUM ANALYSIS**", key="run_agent_analysis_btn"):
         if st.session_state.monitored_fields:
-            agent = AgriculturalAgent(monitored_fields=st.session_state.monitored_fields)
+            with st.spinner("🛰️ **AGENTS SYNCHRONIZING**: Multi-spectrum analysis in progress..."):
+                agent = AgriculturalAgent(monitored_fields=st.session_state.monitored_fields)
 
-            # Run the analysis and store the results in session state
-            analysis_results = agent.perform_scheduled_analysis()
-            st.session_state.agent_analysis_results = analysis_results
+                # Run the analysis and store the results in session state
+                analysis_results = agent.perform_scheduled_analysis()
+                st.session_state.agent_analysis_results = analysis_results
 
-            # Process the results to generate insights and anomalies
-            processed_insights = agent.process_analysis_results(analysis_results)
-            st.session_state.agent_processed_insights = processed_insights
+                # Process the results to generate insights and anomalies
+                processed_insights = agent.process_analysis_results(analysis_results)
+                st.session_state.agent_processed_insights = processed_insights
 
-            st.success("Scheduled analysis initiated for monitored fields. Results displayed below.")
+            st.success("✅ **MISSION COMPLETE**: All agents have reported back with intelligence data")
         else:
-            st.warning("Add fields to monitor before running analysis.")
+            st.warning("⚠️ **NO ACTIVE AGENTS**: Deploy surveillance to sectors before analysis")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Display agent analysis results if available in session state
     if 'agent_analysis_results' in st.session_state and st.session_state.agent_analysis_results:
