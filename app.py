@@ -852,7 +852,7 @@ with tab5:
                 if st.session_state.chatbot_state == 'idle':
                     if any(keyword in prompt.lower() for keyword in ["health", "analysis", "report", "results", "insights"]):
                         if st.session_state.chatbot_field_coords:
-                            response = f"Please wait while I analyze the field at coordinates {st.session_state.chatbot_field_coords[1]:.4f}, {st.session_state.chatbot_field_coords[0]:.4f}.\n\n" # Note: coordinates are [lon, lat] but we display lat, lon for user
+                            response = f"🛰️ **QUANTUM ANALYSIS INITIATED** for sector at coordinates `{st.session_state.chatbot_field_coords[1]:.4f}°, {st.session_state.chatbot_field_coords[0]:.4f}°`\n\n🔄 **NEURAL NETWORKS SYNCHRONIZING**...\n\n" # Note: coordinates are [lon, lat] but we display lat, lon for user
 
                             # --- Trigger Analysis ---+
                             try:
