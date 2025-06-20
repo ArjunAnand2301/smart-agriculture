@@ -370,7 +370,7 @@ with tab1:
 
             # Display the map with explicit width and height
             st.markdown("### 🗺️ **NEURAL MAPPING INTERFACE**")
-            st.markdown("*🎯 Select coordinates • 📡 Satellite overlay • 🔍 Precision targeting*")
+            st.markdown("*🎯 Select coordinates • ���� Satellite overlay • 🔍 Precision targeting*")
             folium_static(m, width=700, height=500)
 
         except Exception as e:
@@ -435,17 +435,18 @@ with tab1:
         st.markdown("#### 🌾 **CROP ANALYTICS**")
         crop_type = st.selectbox("🌱 **Primary Crop**", ["wheat", "corn", "rice", "soybeans", "cotton"], key="crop_type_select")
 
-        end_date = st.date_input("End Date", value=datetime.now().date(), key="end_date_input")
+        end_date = st.date_input("📅 **Analysis End**", value=datetime.now().date(), key="end_date_input")
         start_date = st.date_input(
-            "Start Date",
+            "📅 **Analysis Start**",
             value=(datetime.now() - timedelta(days=30)).date(),
             max_value=end_date,
             key="start_date_input"
         )
 
+        st.markdown("#### ⚡ **FIELD OPERATIONS**")
         # Get the drawn features and save boundaries
         # This button should ideally capture drawn shapes, but currently uses point from coordinates.
-        if st.button("Save Field Boundaries", key="save_boundaries_btn"):
+        if st.button("💾 **SAVE BOUNDARIES**", key="save_boundaries_btn"):
             st.session_state.field_boundaries = {
                 'type': 'FeatureCollection',
                 'features': [{
@@ -456,9 +457,9 @@ with tab1:
                     }
                 }]
             }
-            st.success("Field boundaries saved!")
+            st.success("✅ **BOUNDARIES LOCKED**: Field perimeter secured!")
 
-        if st.button("Analyze Field", key="analyze_field_btn"):
+        if st.button("🔬 **INITIATE DEEP SCAN**", key="analyze_field_btn"):
             st.info("Running analysis. Please wait...")
             system = SmartAgricultureSystem()
             field_coordinates = [longitude, latitude]
