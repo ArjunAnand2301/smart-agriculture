@@ -702,34 +702,45 @@ with tab3:
     st.markdown('</div>', unsafe_allow_html=True)
 
 with tab4:
-    st.header("Agent Management")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("## 🤖 AI AGENT COMMAND CENTER")
+    st.markdown("*Autonomous field monitoring and intelligent agent coordination*")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.subheader("Monitored Fields")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 👁️ **SURVEILLANCE NETWORK**")
+    st.markdown("*Active monitoring zones under AI supervision*")
     if st.session_state.monitored_fields:
         for i, field in enumerate(st.session_state.monitored_fields):
-            st.write(f"{i+1}. {field['name']} ({field['coordinates'][1]:.4f}, {field['coordinates'][0]:.4f})")
+            st.markdown(f"🎯 **SECTOR {i+1}**: `{field['name']}` • **COORDINATES**: `{field['coordinates'][1]:.4f}°, {field['coordinates'][0]:.4f}°`")
     else:
-        st.info("No fields are currently being monitored by the agent.")
+        st.info("🔍 **STATUS**: No active surveillance zones detected")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.subheader("Add New Field to Monitor")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### ➕ **DEPLOY NEW SURVEILLANCE**")
+    st.markdown("*Register new field for autonomous monitoring*")
     with st.form("add_field_form", clear_on_submit=True):
-        field_name = st.text_input("Field Name")
-        field_lon = st.number_input("Longitude", format="%f", key="new_field_lon")
-        field_lat = st.number_input("Latitude", format="%f", key="new_field_lat")
+        field_name = st.text_input("🏷️ **Sector Designation**", placeholder="Enter field identifier...")
+        field_lon = st.number_input("🌐 **Longitude Coordinates**", format="%f", key="new_field_lon")
+        field_lat = st.number_input("🌐 **Latitude Coordinates**", format="%f", key="new_field_lat")
 
-        add_button = st.form_submit_button("Add Field")
+        add_button = st.form_submit_button("🚀 **DEPLOY AGENT**")
 
         if add_button:
             if field_name and field_lon is not None and field_lat is not None:
                 new_field = {'name': field_name, 'coordinates': [field_lon, field_lat]}
                 st.session_state.monitored_fields.append(new_field)
-                st.success(f"Added field '{field_name}' to the monitoring list.")
+                st.success(f"✅ **DEPLOYMENT SUCCESSFUL**: Agent assigned to sector '{field_name}'")
                 st.rerun() # Rerun to update the displayed list
             else:
-                st.warning("Please fill in all fields to add a new field.")
+                st.warning("⚠️ **DEPLOYMENT FAILED**: All parameters required for agent activation")
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.subheader("Manual Agent Actions")
-    if st.button("Run Scheduled Analysis Now", key="run_agent_analysis_btn"):
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### ⚡ **AGENT OPERATIONS**")
+    st.markdown("*Manual override and emergency protocols*")
+    if st.button("🔬 **EXECUTE FULL SPECTRUM ANALYSIS**", key="run_agent_analysis_btn"):
         if st.session_state.monitored_fields:
             agent = AgriculturalAgent(monitored_fields=st.session_state.monitored_fields)
 
