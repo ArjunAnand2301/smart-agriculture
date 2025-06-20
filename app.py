@@ -13,8 +13,283 @@ from src.main import SmartAgricultureSystem
 from src.agent.agricultural_agent import AgriculturalAgent # Import the Agent class
 import re # Import regex module
 
-st.set_page_config(page_title="Smart Agriculture System", layout="wide")
-st.title("🌱 Smart Agriculture System for Farmers")
+st.set_page_config(
+    page_title="NEXUS AgriTech • Future of Farming",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    page_icon="🚀"
+)
+
+# Inject futuristic CSS styling
+st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap');
+
+    :root {
+        --neon-cyan: #00f5ff;
+        --neon-purple: #b347d9;
+        --neon-blue: #2196f3;
+        --neon-green: #39ff14;
+        --dark-bg: #0a0a0a;
+        --card-bg: rgba(13, 13, 13, 0.95);
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --border-glow: rgba(0, 245, 255, 0.3);
+    }
+
+    /* Main app background */
+    .stApp {
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+        background-attachment: fixed;
+    }
+
+    /* Hide default elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+
+    /* Main title styling */
+    .main-title {
+        font-family: 'Orbitron', monospace;
+        font-size: 3.5rem;
+        font-weight: 900;
+        text-align: center;
+        background: linear-gradient(45deg, var(--neon-cyan), var(--neon-purple), var(--neon-blue));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 2rem 0;
+        text-shadow: 0 0 30px rgba(0, 245, 255, 0.5);
+        animation: pulse-glow 2s ease-in-out infinite alternate;
+    }
+
+    .subtitle {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 1.2rem;
+        color: var(--neon-cyan);
+        text-align: center;
+        margin-bottom: 3rem;
+        opacity: 0.8;
+    }
+
+    @keyframes pulse-glow {
+        from { text-shadow: 0 0 20px rgba(0, 245, 255, 0.5), 0 0 30px rgba(179, 71, 217, 0.3); }
+        to { text-shadow: 0 0 30px rgba(0, 245, 255, 0.8), 0 0 40px rgba(179, 71, 217, 0.6); }
+    }
+
+    /* Tab styling */
+    .stTabs [data-baseweb="tab-list"] {
+        gap: 8px;
+        background: var(--glass-bg);
+        border-radius: 15px;
+        padding: 10px;
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-glow);
+    }
+
+    .stTabs [data-baseweb="tab"] {
+        height: 50px;
+        padding: 0 24px;
+        background: linear-gradient(135deg, rgba(0, 245, 255, 0.1), rgba(179, 71, 217, 0.1));
+        border-radius: 10px;
+        border: 1px solid transparent;
+        color: var(--neon-cyan);
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        background: linear-gradient(135deg, rgba(0, 245, 255, 0.2), rgba(179, 71, 217, 0.2));
+        border: 1px solid var(--neon-cyan);
+        box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .stTabs [aria-selected="true"] {
+        background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)) !important;
+        color: var(--dark-bg) !important;
+        box-shadow: 0 0 25px rgba(0, 245, 255, 0.5) !important;
+    }
+
+    /* Card containers */
+    .futuristic-card {
+        background: var(--card-bg);
+        border-radius: 20px;
+        border: 1px solid var(--border-glow);
+        padding: 25px;
+        margin: 20px 0;
+        backdrop-filter: blur(15px);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .futuristic-card:hover {
+        border-color: var(--neon-cyan);
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(0, 245, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        transform: translateY(-5px);
+    }
+
+    /* Headers */
+    h1, h2, h3 {
+        font-family: 'Orbitron', monospace !important;
+        color: var(--neon-cyan) !important;
+        text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+    }
+
+    /* Input fields */
+    .stTextInput > div > div > input,
+    .stNumberInput > div > div > input,
+    .stSelectbox > div > div > div,
+    .stDateInput > div > div > input {
+        background: rgba(0, 0, 0, 0.7) !important;
+        border: 1px solid var(--border-glow) !important;
+        border-radius: 10px !important;
+        color: var(--neon-cyan) !important;
+        font-family: 'Exo 2', sans-serif !important;
+        backdrop-filter: blur(10px);
+    }
+
+    .stTextInput > div > div > input:focus,
+    .stNumberInput > div > div > input:focus {
+        border-color: var(--neon-cyan) !important;
+        box-shadow: 0 0 15px rgba(0, 245, 255, 0.3) !important;
+    }
+
+    /* Buttons */
+    .stButton > button {
+        background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)) !important;
+        color: var(--dark-bg) !important;
+        border: none !important;
+        border-radius: 25px !important;
+        font-family: 'Exo 2', sans-serif !important;
+        font-weight: 600 !important;
+        padding: 12px 30px !important;
+        transition: all 0.3s ease !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1px !important;
+    }
+
+    .stButton > button:hover {
+        background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan)) !important;
+        box-shadow: 0 0 25px rgba(0, 245, 255, 0.5) !important;
+        transform: translateY(-3px) !important;
+    }
+
+    /* Metrics */
+    [data-testid="metric-container"] {
+        background: var(--glass-bg);
+        border: 1px solid var(--border-glow);
+        border-radius: 15px;
+        padding: 20px;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    [data-testid="metric-container"]:hover {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 20px rgba(0, 245, 255, 0.2);
+    }
+
+    [data-testid="metric-container"] > div {
+        color: var(--neon-cyan) !important;
+        font-family: 'Orbitron', monospace !important;
+    }
+
+    /* Expandable sections */
+    .streamlit-expanderHeader {
+        background: var(--glass-bg) !important;
+        border: 1px solid var(--border-glow) !important;
+        border-radius: 10px !important;
+        font-family: 'Exo 2', sans-serif !important;
+        color: var(--neon-cyan) !important;
+    }
+
+    .streamlit-expanderContent {
+        background: var(--card-bg) !important;
+        border: 1px solid var(--border-glow) !important;
+        border-radius: 0 0 10px 10px !important;
+    }
+
+    /* Chat messages */
+    .stChatMessage {
+        background: var(--glass-bg) !important;
+        border: 1px solid var(--border-glow) !important;
+        border-radius: 15px !important;
+        backdrop-filter: blur(10px) !important;
+    }
+
+    /* Checkboxes */
+    .stCheckbox > label {
+        color: var(--neon-cyan) !important;
+        font-family: 'Exo 2', sans-serif !important;
+    }
+
+    /* Sidebar styling */
+    .css-1d391kg {
+        background: var(--card-bg) !important;
+        border-right: 1px solid var(--border-glow) !important;
+    }
+
+    /* Success/Error/Warning messages */
+    .stSuccess {
+        background: linear-gradient(135deg, rgba(57, 255, 20, 0.1), rgba(57, 255, 20, 0.05)) !important;
+        border: 1px solid var(--neon-green) !important;
+        border-radius: 10px !important;
+        color: var(--neon-green) !important;
+    }
+
+    .stError {
+        background: linear-gradient(135deg, rgba(255, 20, 57, 0.1), rgba(255, 20, 57, 0.05)) !important;
+        border: 1px solid #ff1439 !important;
+        border-radius: 10px !important;
+    }
+
+    .stWarning {
+        background: linear-gradient(135deg, rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0.05)) !important;
+        border: 1px solid #ffa500 !important;
+        border-radius: 10px !important;
+    }
+
+    /* Loading animation */
+    .loading-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(135deg, var(--neon-purple), var(--neon-cyan));
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# Main title with futuristic styling
+st.markdown("""
+<div class="main-title">NEXUS AGRITECH</div>
+<div class="subtitle">🚀 Advanced Agricultural Intelligence Platform</div>
+""", unsafe_allow_html=True)
 
 # Initialize session state for storing field boundaries and map center
 if 'field_boundaries' not in st.session_state:
@@ -70,10 +345,10 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Field Analysis", "Historical Data", "Co
 
 with tab1:
     st.header("Field Analysis")
-    
+
     # Create two columns for the layout
     col1, col2 = st.columns([2, 1])
-    
+
     with col1:
         try:
             # Create a map with multiple layers
@@ -82,19 +357,19 @@ with tab1:
                 zoom_start=13,
                 tiles='OpenStreetMap' # Use a simple OpenStreetMap tile layer
             )
-            
+
             # Display the map with explicit width and height
             st.subheader("Field Location")
             st.write("Search for a location, click on the map, or use the input fields to set coordinates")
             folium_static(m, width=700, height=500)
-            
+
         except Exception as e:
             st.error(f"Error creating map: {str(e)}")
             st.info("Could not display map.")
 
     with col2:
         st.subheader("Field Details")
-        
+
         # Location search
         search_query = st.text_input("Search Location", placeholder="Enter city, address, or landmark", key="location_search")
         if search_query:
@@ -106,11 +381,11 @@ with tab1:
                 st.rerun() # Rerun after search to update map and coordinates
             else:
                 st.warning("Location not found. Please try a different search term.")
-        
+
         # Input fields for coordinates
         longitude = st.number_input("Longitude", value=st.session_state.map_center[1], format="%f", key="longitude_input")
         latitude = st.number_input("Latitude", value=st.session_state.map_center[0], format="%f", key="latitude_input")
-        
+
         # Update map center in state when coordinates change but don't rerun automatically
         st.session_state.map_center[0] = latitude
         st.session_state.map_center[1] = longitude
@@ -128,13 +403,13 @@ with tab1:
                 st.session_state.map_center = [latitude, longitude]
                 st.session_state.last_coords = [latitude, longitude]
                 st.rerun() # Rerun to center map
-        
+
         with col_controls2:
             if st.button("Reset View", use_container_width=True, key="reset_view_btn"):
                 st.session_state.map_center = [38.5449, -121.7421]
                 st.session_state.last_coords = st.session_state.map_center
                 st.rerun() # Rerun to reset view
-        
+
         # Map layers
         st.subheader("Map Layers")
         st.session_state.map_layers['OpenStreetMap'] = st.checkbox("Street Map", value=True, key="street_map_layer_col2")
@@ -143,19 +418,19 @@ with tab1:
 
         # Note: The checkbox state needs to be handled to update the map layers. This will require rebuilding the map based on the checked layers.
         # For now, the map display in col1 is simplified, but we'll address dynamic layers later.
-        
+
         # Field details
         st.subheader("Field Information")
         crop_type = st.selectbox("Crop Type", ["wheat", "corn", "rice", "soybeans", "cotton"], key="crop_type_select")
-        
+
         end_date = st.date_input("End Date", value=datetime.now().date(), key="end_date_input")
         start_date = st.date_input(
-            "Start Date", 
+            "Start Date",
             value=(datetime.now() - timedelta(days=30)).date(),
             max_value=end_date,
             key="start_date_input"
         )
-        
+
         # Get the drawn features and save boundaries
         # This button should ideally capture drawn shapes, but currently uses point from coordinates.
         if st.button("Save Field Boundaries", key="save_boundaries_btn"):
@@ -182,12 +457,12 @@ with tab1:
                     start_date.strftime("%Y-%m-%d"),
                     end_date.strftime("%Y-%m-%d")
                 )
-                
+
                 # Display data quality status
                 health_analysis = results["health_analysis"]
                 data_quality = health_analysis.get('data_quality', 'unknown')
                 status_message = health_analysis.get('status_message', '')
-                
+
                 if data_quality == 'limited':
                     st.warning("⚠️ Limited satellite data available")
                     st.info(status_message)
@@ -196,26 +471,26 @@ with tab1:
                     st.error(status_message)
                 else:
                     st.success("✅ Analysis completed successfully")
-                
+
                 # Display results in an expandable section
                 with st.expander("Field Analysis Results", expanded=True):
                     # Remove internal status fields from display
-                    display_analysis = {k: v for k, v in health_analysis.items() 
+                    display_analysis = {k: v for k, v in health_analysis.items()
                                      if k not in ['data_quality', 'status_message']}
                     st.json(display_analysis)
-                
+
                 with st.expander("Resource Optimization Recommendations", expanded=True):
                     st.json(results["recommendations"])
-                
+
                 # Water usage recommendations
                 with st.expander("Water Usage Recommendations", expanded=True):
                     weather_data = {"temperature": 25, "humidity": 60, "precipitation": 0}
                     water_recommendations = system.get_water_usage_recommendations(
-                        field_coordinates, 
+                        field_coordinates,
                         weather_data
                     )
                     st.json(water_recommendations)
-                
+
                 # Pesticide recommendations
                 with st.expander("Pesticide Usage Recommendations", expanded=True):
                     pesticide_recommendations = system.get_pesticide_recommendations(
@@ -223,7 +498,7 @@ with tab1:
                         crop_type
                     )
                     st.json(pesticide_recommendations)
-                
+
                 st.success("Analysis complete!")
             except Exception as e:
                 st.error(f"Error running analysis: {str(e)}")
@@ -234,41 +509,41 @@ with tab1:
             with st.spinner("Fetching weather data..."):
                 system = SmartAgricultureSystem()
                 weather_data = system.get_weather_report([latitude, longitude])
-                
+
                 if weather_data['status'] == 'success':
                     current = weather_data['current_weather']
                     forecast = weather_data['forecast']
                     insights = weather_data['insights']
-                    
+
                     # Display current weather
                     st.markdown("### Current Weather")
                     col_temp, col_hum = st.columns(2)
                     with col_temp:
-                        st.metric("Temperature", f"{current['temperature']:.1f}°C", 
+                        st.metric("Temperature", f"{current['temperature']:.1f}°C",
                                 f"Feels like: {current['feels_like']:.1f}°C")
                     with col_hum:
                         st.metric("Humidity", f"{current['humidity']}%")
-                    
+
                     col_wind, col_pres = st.columns(2)
                     with col_wind:
                         st.metric("Wind Speed", f"{current['wind_speed']} m/s")
                     with col_pres:
                         st.metric("Pressure", f"{current['pressure']} hPa")
-                    
+
                     st.markdown(f"**Conditions:** {current['weather_description'].title()}")
-                    
+
                     # Display weather insights
                     if insights:
                         st.markdown("### Weather Insights")
                         for insight in insights:
                             st.info(insight)
-                    
+
                     # Display forecast
                     st.markdown("### 5-Day Forecast")
                     forecast_df = pd.DataFrame(forecast)
                     forecast_df['date'] = forecast_df['timestamp'].dt.date
                     forecast_df['time'] = forecast_df['timestamp'].dt.time
-                    
+
                     # Group by date and calculate daily statistics
                     daily_forecast = forecast_df.groupby('date').agg({
                         'temperature': ['mean', 'min', 'max'],
@@ -276,22 +551,22 @@ with tab1:
                         'precipitation': 'mean',
                         'wind_speed': 'mean'
                     }).round(1)
-                    
+
                     daily_forecast.columns = ['_'.join(col).strip() for col in daily_forecast.columns.values]
-                    
+
                     # Display daily forecast
                     for date, row in daily_forecast.iterrows():
                         with st.expander(f"{date.strftime('%A, %B %d')}"):
                             col1, col2, col3 = st.columns(3)
                             with col1:
-                                st.metric("Temperature", 
+                                st.metric("Temperature",
                                         f"{row['temperature_mean']:.1f}°C",
                                         f"Min: {row['temperature_min']:.1f}°C, Max: {row['temperature_max']:.1f}°C")
                             with col2:
                                 st.metric("Humidity", f"{row['humidity_mean']:.1f}%")
                             with col3:
                                 st.metric("Precipitation", f"{row['precipitation_mean']:.1f}%")
-                            
+
                             # Get weather description for this day
                             day_weather = forecast_df[forecast_df['date'] == date]['weather_description'].mode().iloc[0]
                             st.markdown(f"**Conditions:** {day_weather.title()}")
@@ -300,7 +575,7 @@ with tab1:
 
 with tab2:
     st.header("Historical Data Analysis")
-    
+
     # Create a date range selector for historical data
     col1, col2 = st.columns(2)
     with col1:
@@ -314,12 +589,12 @@ with tab2:
             value=datetime.now().date(),
             min_value=historical_start
         )
-    
+
     # Generate some sample historical data
     dates = pd.date_range(historical_start, historical_end, freq='M')
     health_scores = np.random.normal(0.7, 0.1, len(dates))
     water_usage = np.random.normal(0.6, 0.15, len(dates))
-    
+
     # Create a line chart for health scores
     st.subheader("Field Health Trends")
     chart_data = pd.DataFrame({
@@ -328,7 +603,7 @@ with tab2:
         'Water Usage': water_usage
     })
     st.line_chart(chart_data.set_index('Date'))
-    
+
     # Add insights
     st.subheader("Key Insights")
     col1, col2, col3 = st.columns(3)
@@ -353,7 +628,7 @@ with tab2:
 
 with tab3:
     st.header("Community Insights")
-    
+
     # Create a section for local farming tips
     st.subheader("Local Farming Tips")
     tips = [
@@ -364,13 +639,13 @@ with tab3:
     ]
     for tip in tips:
         st.info(tip)
-    
+
     # Add a section for community questions
     st.subheader("Ask the Community")
     question = st.text_area("Post your question to the farming community")
     if st.button("Submit Question"):
         st.success("Question submitted! Local farmers will be notified.")
-    
+
     # Add a section for local weather alerts
     st.subheader("Local Weather Alerts")
     alerts = [
@@ -383,7 +658,7 @@ with tab3:
 
 with tab4:
     st.header("Agent Management")
-    
+
     st.subheader("Monitored Fields")
     if st.session_state.monitored_fields:
         for i, field in enumerate(st.session_state.monitored_fields):
@@ -396,9 +671,9 @@ with tab4:
         field_name = st.text_input("Field Name")
         field_lon = st.number_input("Longitude", format="%f", key="new_field_lon")
         field_lat = st.number_input("Latitude", format="%f", key="new_field_lat")
-        
+
         add_button = st.form_submit_button("Add Field")
-        
+
         if add_button:
             if field_name and field_lon is not None and field_lat is not None:
                 new_field = {'name': field_name, 'coordinates': [field_lon, field_lat]}
@@ -412,7 +687,7 @@ with tab4:
     if st.button("Run Scheduled Analysis Now", key="run_agent_analysis_btn"):
         if st.session_state.monitored_fields:
             agent = AgriculturalAgent(monitored_fields=st.session_state.monitored_fields)
-            
+
             # Run the analysis and store the results in session state
             analysis_results = agent.perform_scheduled_analysis()
             st.session_state.agent_analysis_results = analysis_results
@@ -436,18 +711,18 @@ with tab4:
                     # Display relevant parts of the results
                     if 'health_analysis' in results:
                         st.write("**Health Analysis:**")
-                        display_health = {k: v for k, v in results['health_analysis'].items() 
+                        display_health = {k: v for k, v in results['health_analysis'].items()
                                           if k not in ['data_quality', 'status_message']}
                         st.json(display_health)
                         if results['health_analysis'].get('data_quality') == 'limited':
                             st.warning(f"⚠️ Limited data: {results['health_analysis'].get('status_message', '')}")
                         elif results['health_analysis'].get('data_quality') == 'error':
                              st.error(f"❌ Data error: {results['health_analysis'].get('status_message', '')}")
-                            
+
                     if 'recommendations' in results:
                         st.write("**Recommendations:**")
                         st.json(results['recommendations'])
-                        
+
                         # Process recommendations to show key-value pairs
                         recommendations = results['recommendations']
                         st.write("\n**Detailed Recommendations:**")
@@ -465,7 +740,7 @@ with tab4:
                                         else:
                                             # Fallback for non-dict recommendations
                                             st.write(f"- {rec}")
-                        
+
                     # You can add more sections here to display water usage, pesticides, etc.
 
     # Display processed agent insights if available in session state
@@ -483,7 +758,7 @@ with tab4:
 
 with tab5:
     st.header("Agricultural Chatbot")
-    
+
     # Display chat messages from history
     for message in st.session_state.chat_history:
         with st.chat_message(message["role"]):
@@ -501,28 +776,28 @@ with tab5:
         with st.chat_message("assistant"):
             with st.spinner("Thinking..."):
                 response = ""
-                
+
                 # --- Chatbot Logic ---+
-                
+
                 # State 1: Idle or receiving a general query
                 if st.session_state.chatbot_state == 'idle':
                     if any(keyword in prompt.lower() for keyword in ["health", "analysis", "report", "results", "insights"]):
                         if st.session_state.chatbot_field_coords:
                             response = f"Please wait while I analyze the field at coordinates {st.session_state.chatbot_field_coords[1]:.4f}, {st.session_state.chatbot_field_coords[0]:.4f}.\n\n" # Note: coordinates are [lon, lat] but we display lat, lon for user
-                            
+
                             # --- Trigger Analysis ---+
                             try:
                                 system = SmartAgricultureSystem() # Initialize system
                                 # Use a default date range for on-demand analysis
                                 end_date = datetime.now().date().strftime("%Y-%m-%d")
                                 start_date = (datetime.now().date() - timedelta(days=30)).strftime("%Y-%m-%d")
-                                
+
                                 analysis_results = system.analyze_field(
                                     st.session_state.chatbot_field_coords,
                                     start_date,
                                     end_date
                                 )
-                                
+
                                 # Process results using the agent's method
                                 agent = AgriculturalAgent() # Initialize agent (can be done here for processing)
                                 processed_insights = agent.process_analysis_results({'On-Demand Field': analysis_results}) # Wrap in dict for processing
@@ -555,31 +830,31 @@ with tab5:
                                                     else:
                                                         # Fallback for non-dict recommendations
                                                         response += f"- {rec}\n"
-                                    
+
                                 else:
                                     response += "\nNo specific recommendations at this time.\n"
-                                
+
                                 # Optionally add more raw details here if needed
                                 # response += "\n**Raw Health Analysis:**\n" + json.dumps(analysis_results.get('health_analysis', {}), indent=2)
-                                
+
                             except Exception as e:
                                 response = f"An error occurred during the analysis: {str(e)}"
                                 st.error(response)
-                            
+
                             # Reset chatbot state after providing report
                             st.session_state.chatbot_state = 'idle'
                             st.session_state.chatbot_field_coords = None # Clear coordinates after analysis
-                            
+
                         else:
                             response = "I can help with that! Please provide the coordinates of the farm you'd like to analyze (e.g., 38.5, -121.7)."
                             st.session_state.chatbot_state = 'awaiting_coords'
-                            
+
                     elif any(keyword in prompt.lower() for keyword in ["hello", "hi", "hey"]):
                          response = "Hello! I am your agricultural assistant chatbot. How can I help you today? You can ask me about analyzing a field's health or managing your monitored fields."
 
                     else:
                         response = "I'm not sure how to help with that. You can ask me to 'analyze a field' or provide a 'report' on a specific location."
-                        
+
                 # State 2: Awaiting coordinates
                 elif st.session_state.chatbot_state == 'awaiting_coords':
                     coords = parse_coordinates(prompt)
@@ -587,12 +862,12 @@ with tab5:
                         st.session_state.chatbot_field_coords = coords
                         st.session_state.chatbot_state = 'idle' # Move back to idle after getting coords
                         response = f"Thank you! I have the coordinates: {coords[1]:.4f}, {coords[0]:.4f}. Now, what would you like to know about this field? You can ask for an 'analysis' or 'report'."
-                        
+
                         # Optionally, trigger analysis immediately after getting coordinates
                         # if any(keyword in prompt.lower() for keyword in ["health", "analysis", "report", "results", "insights"]):
                         #     # Code to trigger analysis and display report here
                         #     pass # We will add this logic in the next step
-                            
+
                     else:
                         response = "I couldn't understand the coordinates. Please provide them in a format like 'latitude, longitude' (e.g., 38.5, -121.7)."
 
@@ -607,4 +882,4 @@ with tab5:
         st.session_state.chat_history.append({"role": "assistant", "content": response})
 
 st.sidebar.markdown("---")
-st.sidebar.info("Developed for sustainable farming 🌾") 
+st.sidebar.info("Developed for sustainable farming 🌾")
