@@ -510,7 +510,7 @@ with tab1:
                     st.json(water_recommendations)
 
                 # Pesticide recommendations
-                with st.expander("🛡️ **BIO-DEFENSE SYSTEMS** • Precision Protection", expanded=True):
+                with st.expander("🛡�� **BIO-DEFENSE SYSTEMS** • Precision Protection", expanded=True):
                     st.markdown("*Advanced crop protection with minimal environmental impact*")
                     pesticide_recommendations = system.get_pesticide_recommendations(
                         field_coordinates,
@@ -915,14 +915,14 @@ with tab5:
                             st.session_state.chatbot_field_coords = None # Clear coordinates after analysis
 
                         else:
-                            response = "I can help with that! Please provide the coordinates of the farm you'd like to analyze (e.g., 38.5, -121.7)."
+                            response = "🤖 **NEURAL INTERFACE ACTIVE** • Provide target coordinates for quantum field analysis (format: `latitude, longitude` e.g., `38.5, -121.7`)"
                             st.session_state.chatbot_state = 'awaiting_coords'
 
                     elif any(keyword in prompt.lower() for keyword in ["hello", "hi", "hey"]):
-                         response = "Hello! I am your agricultural assistant chatbot. How can I help you today? You can ask me about analyzing a field's health or managing your monitored fields."
+                         response = "🚀 **NEURAL CHAT ONLINE** • I am your advanced agricultural AI consultant. How may I assist with your quantum farming operations? Available functions: `field analysis` • `sector monitoring` • `threat assessment`"
 
                     else:
-                        response = "I'm not sure how to help with that. You can ask me to 'analyze a field' or provide a 'report' on a specific location."
+                        response = "❓ **QUERY NOT RECOGNIZED** • Try: `analyze field` | `generate report` | `sector coordinates` for optimal neural interface compatibility."
 
                 # State 2: Awaiting coordinates
                 elif st.session_state.chatbot_state == 'awaiting_coords':
