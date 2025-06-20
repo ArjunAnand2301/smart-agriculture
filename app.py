@@ -500,7 +500,8 @@ with tab1:
                     st.json(results["recommendations"])
 
                 # Water usage recommendations
-                with st.expander("Water Usage Recommendations", expanded=True):
+                with st.expander("💧 **HYDRO-OPTIMIZATION MATRIX** • Smart Irrigation", expanded=True):
+                    st.markdown("*AI-powered water management and conservation protocols*")
                     weather_data = {"temperature": 25, "humidity": 60, "precipitation": 0}
                     water_recommendations = system.get_water_usage_recommendations(
                         field_coordinates,
@@ -509,14 +510,15 @@ with tab1:
                     st.json(water_recommendations)
 
                 # Pesticide recommendations
-                with st.expander("Pesticide Usage Recommendations", expanded=True):
+                with st.expander("🛡️ **BIO-DEFENSE SYSTEMS** • Precision Protection", expanded=True):
+                    st.markdown("*Advanced crop protection with minimal environmental impact*")
                     pesticide_recommendations = system.get_pesticide_recommendations(
                         field_coordinates,
                         crop_type
                     )
                     st.json(pesticide_recommendations)
 
-                st.success("Analysis complete!")
+                st.success("🎉 **MISSION COMPLETE**: All systems operational")
             except Exception as e:
                 st.error(f"Error running analysis: {str(e)}")
 
