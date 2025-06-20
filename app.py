@@ -600,19 +600,22 @@ with tab2:
     st.markdown("*Time-series analysis and predictive modeling from historical datasets*")
     st.markdown('</div>', unsafe_allow_html=True)
 
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### ⏰ **TEMPORAL PARAMETERS**")
     # Create a date range selector for historical data
     col1, col2 = st.columns(2)
     with col1:
         historical_start = st.date_input(
-            "Historical Start Date",
+            "📅 **Archive Start**",
             value=(datetime.now() - timedelta(days=365)).date()
         )
     with col2:
         historical_end = st.date_input(
-            "Historical End Date",
+            "📅 **Archive End**",
             value=datetime.now().date(),
             min_value=historical_start
         )
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Generate some sample historical data
     dates = pd.date_range(historical_start, historical_end, freq='M')
@@ -620,13 +623,16 @@ with tab2:
     water_usage = np.random.normal(0.6, 0.15, len(dates))
 
     # Create a line chart for health scores
-    st.subheader("Field Health Trends")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 📈 **NEURAL TREND ANALYSIS**")
+    st.markdown("*AI-powered pattern recognition in agricultural data*")
     chart_data = pd.DataFrame({
         'Date': dates,
         'Health Score': health_scores,
         'Water Usage': water_usage
     })
     st.line_chart(chart_data.set_index('Date'))
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Add insights
     st.subheader("Key Insights")
