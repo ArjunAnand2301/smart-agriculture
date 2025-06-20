@@ -595,7 +595,10 @@ with tab1:
                     st.error(f"Error fetching weather data: {weather_data['message']}")
 
 with tab2:
-    st.header("Historical Data Analysis")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("## 📊 TEMPORAL DATA ARCHIVE")
+    st.markdown("*Time-series analysis and predictive modeling from historical datasets*")
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # Create a date range selector for historical data
     col1, col2 = st.columns(2)
