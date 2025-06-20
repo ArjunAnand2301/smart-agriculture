@@ -635,26 +635,29 @@ with tab2:
     st.markdown('</div>', unsafe_allow_html=True)
 
     # Add insights
-    st.subheader("Key Insights")
+    st.markdown('<div class="futuristic-card">', unsafe_allow_html=True)
+    st.markdown("### 🎯 **QUANTUM INSIGHTS**")
+    st.markdown("*AI-computed performance metrics and predictions*")
     col1, col2, col3 = st.columns(3)
     with col1:
         st.metric(
-            "Average Health Score",
+            "🧬 **Neural Health Index**",
             f"{np.mean(health_scores):.2f}",
             f"{np.mean(health_scores) - 0.5:.2f}"
         )
     with col2:
         st.metric(
-            "Water Usage Efficiency",
+            "💧 **Hydro Efficiency**",
             f"{np.mean(water_usage):.2f}",
             f"{np.mean(water_usage) - 0.5:.2f}"
         )
     with col3:
         st.metric(
-            "Yield Prediction",
+            "🚀 **Yield Projection**",
             "85%",
             "5%"
         )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 with tab3:
     st.header("Community Insights")
