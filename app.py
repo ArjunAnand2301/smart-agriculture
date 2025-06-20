@@ -805,16 +805,18 @@ with tab4:
 
     # Display processed agent insights if available in session state
     if 'agent_processed_insights' in st.session_state and st.session_state.agent_processed_insights:
-        st.subheader("Agent Insights and Anomalies")
+        st.markdown("### 🔍 **THREAT ANALYSIS & INSIGHTS**")
+        st.markdown("*AI-processed intelligence and anomaly detection*")
         for field_name, insights in st.session_state.agent_processed_insights.items():
-            with st.expander(f"Insights for {field_name}", expanded=True):
-                st.write(f"**Summary:** {insights.get('summary', 'No summary available.')}")
+            with st.expander(f"🧠 **NEURAL INSIGHTS**: {field_name} • Threat Matrix", expanded=True):
+                st.markdown(f"**🎯 EXECUTIVE SUMMARY:** {insights.get('summary', 'No intelligence data available.')}")
                 if insights.get('anomalies'):
-                    st.write("**Anomalies Detected:**")
+                    st.markdown("**⚠️ ANOMALIES DETECTED:**")
                     for anomaly in insights['anomalies']:
-                        st.warning(f"- {anomaly}")
+                        st.warning(f"🚨 **ALERT**: {anomaly}")
                 else:
-                    st.info("No significant anomalies detected.")
+                    st.info("✅ **ALL CLEAR**: No significant threats detected in sector")
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with tab5:
     st.header("Agricultural Chatbot")
