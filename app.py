@@ -510,7 +510,7 @@ with tab1:
                     st.json(water_recommendations)
 
                 # Pesticide recommendations
-                with st.expander("🛡�� **BIO-DEFENSE SYSTEMS** • Precision Protection", expanded=True):
+                with st.expander("🛡️ **BIO-DEFENSE SYSTEMS** • Precision Protection", expanded=True):
                     st.markdown("*Advanced crop protection with minimal environmental impact*")
                     pesticide_recommendations = system.get_pesticide_recommendations(
                         field_coordinates,
@@ -930,7 +930,7 @@ with tab5:
                     if coords:
                         st.session_state.chatbot_field_coords = coords
                         st.session_state.chatbot_state = 'idle' # Move back to idle after getting coords
-                        response = f"Thank you! I have the coordinates: {coords[1]:.4f}, {coords[0]:.4f}. Now, what would you like to know about this field? You can ask for an 'analysis' or 'report'."
+                        response = f"✅ **COORDINATES LOCKED**: Target acquired at `{coords[1]:.4f}°, {coords[0]:.4f}°` • **READY FOR NEURAL ANALYSIS** • Request: `analysis` or `report` to initiate quantum field scan."
 
                         # Optionally, trigger analysis immediately after getting coordinates
                         # if any(keyword in prompt.lower() for keyword in ["health", "analysis", "report", "results", "insights"]):
@@ -938,7 +938,7 @@ with tab5:
                         #     pass # We will add this logic in the next step
 
                     else:
-                        response = "I couldn't understand the coordinates. Please provide them in a format like 'latitude, longitude' (e.g., 38.5, -121.7)."
+                        response = "❌ **COORDINATE PARSING FAILED** • Format required: `latitude, longitude` (example: `38.5, -121.7`) for neural targeting system."
 
                 else:
                      response = "An unexpected error occurred with the chatbot state."
